@@ -147,4 +147,22 @@ footer {
     height: 50px;"/>
         <p>&copy; 2025 My Portfolio Website. All Rights Reserved.</p>
     </footer>
+    <script>
+        const validateForm = () => {
+    let isValid = true;
+    ["name", "address", "email", "phone"].forEach(id => {
+    const value = document.getElementById(id).value.trim();
+    const errorField = document.getElementById(id + "Error");
+    errorField.textContent = value ? "" : id.charAt(0).toUpperCase() + id.slice(1) + " is required.";
+    if (id === "email" && value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+    errorField.textContent = "Invalid email."; isValid = false;
+}
+    if (id === "phone" && value && !/^\d{10}$/.test(value)) {
+        errorField.textContent = "Invalid phone number!"; isValid = false;
+}
+    if (!value) isValid = false;
+    });
+    if (isValid) alert("Form submitted successfully!");
+    };
+    </script>
 </html>
